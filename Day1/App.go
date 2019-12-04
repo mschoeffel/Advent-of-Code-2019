@@ -13,12 +13,15 @@ func main() {
 	masses := readMassInput()
 
 	result := 0
+	result2 := 0
 
 	for i := 0; i < len(masses); i++ {
 		result += calculateFuel(masses[i])
+		result2 += calculateFuelRecursive(masses[i])
 	}
 
 	fmt.Println(result)
+	fmt.Println(result2)
 
 }
 
@@ -54,5 +57,15 @@ func readMassInput() []int {
 
 func calculateFuel(mass int) int {
 	fuel := mass/3 - 2
+	return fuel
+}
+
+func calculateFuelRecursive(mass int) int {
+	fuel := mass/3 - 2
+	if fuel > 0 {
+		fuel += calculateFuelRecursive(fuel)
+	} else {
+		fuel = 0
+	}
 	return fuel
 }
