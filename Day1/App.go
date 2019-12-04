@@ -9,22 +9,21 @@ import (
 )
 
 func main() {
-
 	masses := readMassInput()
 
-	result := 0
-	result2 := 0
+	resultPartOne := 0
+	resultPartTwo := 0
 
 	for i := 0; i < len(masses); i++ {
-		result += calculateFuel(masses[i])
-		result2 += calculateFuelRecursive(masses[i])
+		resultPartOne += calculateFuel(masses[i])
+		resultPartTwo += calculateFuelRecursive(masses[i])
 	}
 
-	fmt.Println(result)
-	fmt.Println(result2)
-
+	fmt.Println(resultPartOne)
+	fmt.Println(resultPartTwo)
 }
 
+// Reads the input data from a txt file
 func readMassInput() []int {
 	dir, err := os.Getwd()
 	if err != nil {
@@ -55,17 +54,18 @@ func readMassInput() []int {
 	return l
 }
 
+//Calculates the fuel (Question part 1)
 func calculateFuel(mass int) int {
 	fuel := mass/3 - 2
 	return fuel
 }
 
+// Calculates the fuel recursively (Question part 2)
 func calculateFuelRecursive(mass int) int {
 	fuel := mass/3 - 2
 	if fuel > 0 {
-		fuel += calculateFuelRecursive(fuel)
+		return fuel + calculateFuelRecursive(fuel)
 	} else {
-		fuel = 0
+		return 0
 	}
-	return fuel
 }
