@@ -3,6 +3,7 @@ package main
 import (
 	"Advent-of-Code-2019/Utils"
 	"fmt"
+	"strconv"
 )
 
 func main() {
@@ -16,8 +17,8 @@ func main() {
 		resultPartTwo += calculateFuelRecursive(masses[i])
 	}
 
-	fmt.Println(resultPartOne)
-	fmt.Println(resultPartTwo)
+	fmt.Println("Result part one: " + strconv.Itoa(resultPartOne))
+	fmt.Println("Result part two: " + strconv.Itoa(resultPartTwo))
 }
 
 //Calculates the fuel (Question part 1)
