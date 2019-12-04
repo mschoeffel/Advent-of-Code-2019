@@ -1,15 +1,12 @@
 package main
 
 import (
-	"bufio"
+	"Advent-of-Code-2019/Utils"
 	"fmt"
-	"log"
-	"os"
-	"strconv"
 )
 
 func main() {
-	masses := readMassInput()
+	masses := Utils.ReadFileByLinesInt("\\Day1\\masses.txt")
 
 	resultPartOne := 0
 	resultPartTwo := 0
@@ -21,37 +18,6 @@ func main() {
 
 	fmt.Println(resultPartOne)
 	fmt.Println(resultPartTwo)
-}
-
-// Reads the input data from a txt file
-func readMassInput() []int {
-	dir, err := os.Getwd()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	file, err := os.Open(dir + "\\Day1\\masses.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	var l []int
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		i, err := strconv.ParseInt(scanner.Text(), 10, 32)
-		if err != nil {
-			log.Fatal(err)
-		} else {
-			l = append(l, int(i))
-		}
-	}
-
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-
-	return l
 }
 
 //Calculates the fuel (Question part 1)
