@@ -1,4 +1,4 @@
-package main
+package Day2
 
 import (
 	"Advent-of-Code-2019/Utils"
@@ -9,14 +9,21 @@ import (
 func main() {
 	//Question part one
 	data := Utils.ReadFileBySeparatorInt("\\Day2\\codes.txt", ",")
-	runCode(data, 12, 2)
-	fmt.Println("Result part one: " + strconv.Itoa(data[0]))
+	fmt.Println("Result part one: " + strconv.Itoa(Day2Part1(data, 12, 2)))
 
 	// Question part two
 	expectedResult := 19690720
-	noun, verb := bruteCode(expectedResult)
-	fmt.Println("Bruteforce successful: Noun: " + strconv.Itoa(noun) + " Verb: " + strconv.Itoa(verb))
-	fmt.Println("Result part two: " + strconv.Itoa(100*noun+verb))
+	fmt.Println("Result part two: " + strconv.Itoa(Day2Part2(expectedResult)))
+}
+
+func Day2Part1(code []int, noun int, verb int) int {
+	runCode(code, noun, verb)
+	return code[0]
+}
+
+func Day2Part2(expected int) int {
+	noun, verb := bruteCode(expected)
+	return 100*noun + verb
 }
 
 // Runs the given register code

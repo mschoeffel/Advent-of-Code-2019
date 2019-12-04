@@ -1,4 +1,4 @@
-package main
+package Day1
 
 import (
 	"Advent-of-Code-2019/Utils"
@@ -9,16 +9,24 @@ import (
 func main() {
 	masses := Utils.ReadFileByLinesInt("\\Day1\\masses.txt")
 
-	resultPartOne := 0
-	resultPartTwo := 0
+	fmt.Println("Result part one: " + strconv.Itoa(Day1Part1(masses)))
+	fmt.Println("Result part two: " + strconv.Itoa(Day1Part2(masses)))
+}
 
+func Day1Part1(masses []int) int {
+	result := 0
 	for i := 0; i < len(masses); i++ {
-		resultPartOne += calculateFuel(masses[i])
-		resultPartTwo += calculateFuelRecursive(masses[i])
+		result += calculateFuel(masses[i])
 	}
+	return result
+}
 
-	fmt.Println("Result part one: " + strconv.Itoa(resultPartOne))
-	fmt.Println("Result part two: " + strconv.Itoa(resultPartTwo))
+func Day1Part2(masses []int) int {
+	result := 0
+	for i := 0; i < len(masses); i++ {
+		result += calculateFuelRecursive(masses[i])
+	}
+	return result
 }
 
 //Calculates the fuel (Question part 1)

@@ -9,6 +9,32 @@ import (
 	"strings"
 )
 
+// Read a file and parses it to string lines
+func ReadFileByLinesString(filename string) []string {
+	dir, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	file, err := os.Open(dir + filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	var l []string
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		l = append(l, scanner.Text())
+	}
+
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+
+	return l
+}
+
 // Reads a file and parses it to int lines
 func ReadFileByLinesInt(filename string) []int {
 	dir, err := os.Getwd()
@@ -40,8 +66,8 @@ func ReadFileByLinesInt(filename string) []int {
 	return l
 }
 
-// Reads a file and parses it by separation at the given separator
-func ReadFileBySeparatorInt(filename string, separator string) []int {
+// Reads a file and splits it at the given separator
+func ReadLineBySeparatorString(filename string, separator string) []string {
 	dir, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
@@ -54,6 +80,13 @@ func ReadFileBySeparatorInt(filename string, separator string) []int {
 
 	text := string(dat)
 	textArr := strings.Split(text, separator)
+
+	return textArr
+}
+
+// Reads a file and splits it at the given separator
+func ReadFileBySeparatorInt(filename string, separator string) []int {
+	textArr := ReadLineBySeparatorString(filename, separator)
 
 	var intArr []int
 
