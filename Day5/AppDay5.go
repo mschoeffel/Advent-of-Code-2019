@@ -2,7 +2,10 @@ package Day5
 
 import (
 	"Advent-of-Code-2019/Utils"
+	"bufio"
 	"fmt"
+	"log"
+	"os"
 	"strconv"
 )
 
@@ -35,6 +38,26 @@ func runCode(code []int, noun int, verb int) []int {
 		case 2:
 			code[code[position+3]] = code[code[position+1]] * code[code[position+2]]
 			position += 4
+			break
+		case 3:
+			//Save input to position given in parameter
+			reader := bufio.NewReader(os.Stdin)
+			text, err := reader.ReadString('\n')
+			if err != nil {
+				log.Fatal(err)
+			} else {
+				value, err := strconv.ParseInt(text, 10, 32)
+				if err != nil {
+					log.Fatal(err)
+				}
+				code[code[position+1]] = int(value)
+			}
+			position += 2
+			break
+		case 4:
+			//Output value of parameter
+			fmt.Println(code[code[position+1]])
+			position += 2
 			break
 		case 99:
 			running = false
