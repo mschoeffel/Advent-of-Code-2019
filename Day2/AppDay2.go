@@ -6,14 +6,14 @@ import (
 	"strconv"
 )
 
-func main() {
+func Main() {
 	//Question part one
 	data := Utils.ReadFileBySeparatorInt("\\Day2\\codes.txt", ",")
-	fmt.Println("Result part one: " + strconv.Itoa(Day2Part1(data, 12, 2)))
+	fmt.Println("Day 2: Result part one: " + strconv.Itoa(Day2Part1(data, 12, 2)))
 
 	// Question part two
 	expectedResult := 19690720
-	fmt.Println("Result part two: " + strconv.Itoa(Day2Part2(expectedResult)))
+	fmt.Println("Day 2: Result part two: " + strconv.Itoa(Day2Part2("\\Day2\\codes.txt", expectedResult)))
 }
 
 func Day2Part1(code []int, noun int, verb int) int {
@@ -21,8 +21,8 @@ func Day2Part1(code []int, noun int, verb int) int {
 	return code[0]
 }
 
-func Day2Part2(expected int) int {
-	noun, verb := bruteCode(expected)
+func Day2Part2(filename string, expected int) int {
+	noun, verb := bruteCode(filename, expected)
 	return 100*noun + verb
 }
 
@@ -53,11 +53,11 @@ func runCode(code []int, noun int, verb int) []int {
 }
 
 // Brute forces the logic and returns the noun and verb to get a specific result (Question part two)
-func bruteCode(result int) (int, int) {
+func bruteCode(filename string, result int) (int, int) {
 	noun := 0
 	verb := 0
-	code := Utils.ReadFileBySeparatorInt("\\Day2\\codes.txt", ",")
-	temp := Utils.ReadFileBySeparatorInt("\\Day2\\codes.txt", ",")
+	code := Utils.ReadFileBySeparatorInt(filename, ",")
+	temp := Utils.ReadFileBySeparatorInt(filename, ",")
 
 	for runCode(temp, noun, verb)[0] != result {
 		// To Debug or print the progress:

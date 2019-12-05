@@ -6,11 +6,11 @@ import (
 	"strconv"
 )
 
-func main() {
+func Main() {
 	masses := Utils.ReadFileByLinesInt("\\Day1\\masses.txt")
 
-	fmt.Println("Result part one: " + strconv.Itoa(Day1Part1(masses)))
-	fmt.Println("Result part two: " + strconv.Itoa(Day1Part2(masses)))
+	fmt.Println("Day 1: Result part one: " + strconv.Itoa(Day1Part1(masses)))
+	fmt.Println("Day 1: Result part two: " + strconv.Itoa(Day1Part2(masses)))
 }
 
 func Day1Part1(masses []int) int {

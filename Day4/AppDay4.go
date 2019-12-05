@@ -5,11 +5,11 @@ import (
 	"strconv"
 )
 
-func main() {
+func Main() {
 	min := 246515
 	max := 739105
-	fmt.Println("Result part one: " + strconv.Itoa(Day4Part1(min, max)))
-	fmt.Println("Result part two: " + strconv.Itoa(Day4Part2(min, max)))
+	fmt.Println("Day 4: Result part one: " + strconv.Itoa(Day4Part1(min, max)))
+	fmt.Println("Day 4: Result part two: " + strconv.Itoa(Day4Part2(min, max)))
 }
 
 func Day4Part1(min int, max int) int {

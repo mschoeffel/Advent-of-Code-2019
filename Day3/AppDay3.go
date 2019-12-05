@@ -17,10 +17,10 @@ type Step struct {
 	y int
 }
 
-func main() {
+func Main() {
 	wiresRaw := Utils.ReadFileByLinesString("\\Day3\\wires.txt")
-	fmt.Println("Result part one: " + strconv.Itoa(Day3Part1(wiresRaw)))
-	fmt.Println("Result part one: " + strconv.Itoa(Day3Part2(wiresRaw)))
+	fmt.Println("Day 3: Result part one: " + strconv.Itoa(Day3Part1(wiresRaw)))
+	fmt.Println("Day 3: Result part one: " + strconv.Itoa(Day3Part2(wiresRaw)))
 }
 
 func Day3Part1(wiresRaw []string) int {
