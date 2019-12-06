@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func Main() {
@@ -46,6 +47,7 @@ func runCode(code []int, noun int, verb int) []int {
 			if err != nil {
 				log.Fatal(err)
 			} else {
+				text = strings.Replace(text, "\n", "", -1)
 				value, err := strconv.ParseInt(text, 10, 32)
 				if err != nil {
 					log.Fatal(err)
