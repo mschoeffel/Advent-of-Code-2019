@@ -22,12 +22,12 @@ I was pretty new to Go so let's see where this ride will go.
 ## Score
 | Day | Part one | Part two |
 |----|----|----|
-| [Day 1]("https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day1") | :star: | :star: |
-| [Day 2]("https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day2") | :star: | :star: |
-| [Day 3]("https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day3") | :star: | :star: |
-| [Day 4]("https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day4") | :star: | :star: |
-| [Day 5]("https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day5") | :clock10: | :clock10: |
-| [Day 6]("https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day6") | :clock10: | :clock10: |
+| [Day 1](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day1) | :star: | :star: |
+| [Day 2](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day2) | :star: | :star: |
+| [Day 3](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day3) | :star: | :star: |
+| [Day 4](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day4) | :star: | :star: |
+| [Day 5](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day5) | :star: | :clock10: |
+| [Day 6](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day6) | :clock10: | :clock10: |
 
 ## Credits
 All credits of the tasks and questions go to `Eric Wastl` (Twitter: `@ericwastl`)\
@@ -40,6 +40,6 @@ The `Main` function would run both tasks of this day and print out the solutions
 If data is given by the task it will also be stored inside of this directory.
 The tasks of the day are also given as `README.md` in the day directory.
 Tests are provided in every day directory and can be executed with the `go test` command.
-in the `Utils` directory some helper functions are stored that can be used by every day.
+In the `Utils` directory some helper functions are stored that can be used by every day.
 
 You can execute all days using the `App` given in the main directory.
