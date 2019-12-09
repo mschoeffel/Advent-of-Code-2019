@@ -22,15 +22,15 @@ I was pretty new to Go so let's see where this ride will go.
 ## Score
 | Day | Part one | Part two |
 |----|----|----|
-| [Day 1](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day1) | :star: | :star: |
-| [Day 2](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day2) | :star: | :star: |
-| [Day 3](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day3) | :star: | :star: |
-| [Day 4](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day4) | :star: | :star: |
-| [Day 5](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day5) | :star: | :star: |
-| [Day 6](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day6) | :star: | :star: |
-| [Day 7](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day7) | :clock10: | :clock10: |
-| [Day 8](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day8) | :clock10: | :clock10: |
-| [Day 9](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day9) | :clock10: | :clock10: |
+| [Day 01](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day01) | :star: | :star: |
+| [Day 02](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day02) | :star: | :star: |
+| [Day 03](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day03) | :star: | :star: |
+| [Day 04](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day04) | :star: | :star: |
+| [Day 05](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day05) | :star: | :star: |
+| [Day 06](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day06) | :star: | :star: |
+| [Day 07](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day07) | :star: | :star: |
+| [Day 08](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day08) | :clock10: | :clock10: |
+| [Day 09](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day09) | :clock10: | :clock10: |
 
 ## Credits
 All credits of the tasks and questions go to `Eric Wastl` (Twitter: `@ericwastl`)\
