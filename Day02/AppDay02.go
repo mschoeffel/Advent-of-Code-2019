@@ -1,4 +1,4 @@
-package Day2
+package Day02
 
 import (
 	"Advent-of-Code-2019/Utils"
@@ -8,12 +8,12 @@ import (
 
 func Main() {
 	//Question part one
-	data := Utils.ReadFileBySeparatorInt("\\Day2\\codes.txt", ",")
+	data := Utils.ReadFileBySeparatorInt("\\Day02\\codes.txt", ",")
 	fmt.Println("Day 2: Result part one: " + strconv.Itoa(Day2Part1(data, 12, 2)))
 
 	// Question part two
 	expectedResult := 19690720
-	fmt.Println("Day 2: Result part two: " + strconv.Itoa(Day2Part2("\\Day2\\codes.txt", expectedResult)))
+	fmt.Println("Day 2: Result part two: " + strconv.Itoa(Day2Part2("\\Day02\\codes.txt", expectedResult)))
 }
 
 func Day2Part1(code []int, noun int, verb int) int {

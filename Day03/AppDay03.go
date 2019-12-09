@@ -1,4 +1,4 @@
-package Day3
+package Day03
 
 import (
 	"Advent-of-Code-2019/Utils"
@@ -18,7 +18,7 @@ type Step struct {
 }
 
 func Main() {
-	wiresRaw := Utils.ReadFileByLinesString("\\Day3\\wires.txt")
+	wiresRaw := Utils.ReadFileByLinesString("\\Day03\\wires.txt")
 	fmt.Println("Day 3: Result part one: " + strconv.Itoa(Day3Part1(wiresRaw)))
 	fmt.Println("Day 3: Result part one: " + strconv.Itoa(Day3Part2(wiresRaw)))
 }

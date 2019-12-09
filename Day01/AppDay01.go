@@ -1,4 +1,4 @@
-package Day1
+package Day01
 
 import (
 	"Advent-of-Code-2019/Utils"
@@ -7,7 +7,7 @@ import (
 )
 
 func Main() {
-	masses := Utils.ReadFileByLinesInt("\\Day1\\masses.txt")
+	masses := Utils.ReadFileByLinesInt("\\Day01\\masses.txt")
 
 	fmt.Println("Day 1: Result part one: " + strconv.Itoa(Day1Part1(masses)))
 	fmt.Println("Day 1: Result part two: " + strconv.Itoa(Day1Part2(masses)))

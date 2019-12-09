@@ -1,23 +1,23 @@
 package main
 
 import (
-	"Advent-of-Code-2019/Day1"
-	"Advent-of-Code-2019/Day2"
-	"Advent-of-Code-2019/Day3"
-	"Advent-of-Code-2019/Day4"
-	"Advent-of-Code-2019/Day5"
+	"Advent-of-Code-2019/Day01"
+	"Advent-of-Code-2019/Day02"
+	"Advent-of-Code-2019/Day03"
+	"Advent-of-Code-2019/Day04"
+	"Advent-of-Code-2019/Day05"
 	"fmt"
 )
 
 func main() {
-	Day1.Main()
+	Day01.Main()
 	fmt.Println("------")
-	Day2.Main()
+	Day02.Main()
 	fmt.Println("------")
-	Day3.Main()
+	Day03.Main()
 	fmt.Println("------")
-	Day4.Main()
+	Day04.Main()
 	fmt.Println("------")
-	Day5.Main()
+	Day05.Main()
 	fmt.Println("------")
 }
