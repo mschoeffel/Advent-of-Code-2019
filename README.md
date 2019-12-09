@@ -26,8 +26,11 @@ I was pretty new to Go so let's see where this ride will go.
 | [Day 2](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day2) | :star: | :star: |
 | [Day 3](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day3) | :star: | :star: |
 | [Day 4](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day4) | :star: | :star: |
-| [Day 5](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day5) | :star: | :clock10: |
-| [Day 6](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day6) | :clock10: | :clock10: |
+| [Day 5](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day5) | :star: | :star: |
+| [Day 6](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day6) | :star: | :star: |
+| [Day 7](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day7) | :clock10: | :clock10: |
+| [Day 8](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day8) | :clock10: | :clock10: |
+| [Day 9](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day9) | :clock10: | :clock10: |
 
 ## Credits
 All credits of the tasks and questions go to `Eric Wastl` (Twitter: `@ericwastl`)\
