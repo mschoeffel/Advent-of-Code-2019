@@ -29,8 +29,9 @@ I was pretty new to Go so let's see where this ride will go.
 | [Day 05](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day05) | :star: | :star: |
 | [Day 06](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day06) | :star: | :star: |
 | [Day 07](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day07) | :star: | :star: |
-| [Day 08](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day08) | :clock10: | :clock10: |
+| [Day 08](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day08) | :star: | :star: |
 | [Day 09](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day09) | :clock10: | :clock10: |
+| [Day 10](https://github.com/mschoeffel/Advent-of-Code-2019/tree/master/Day10) | :clock10: | :clock10: |
 
 ## Credits
 All credits of the tasks and questions go to `Eric Wastl` (Twitter: `@ericwastl`)\
