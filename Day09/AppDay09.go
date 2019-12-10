@@ -15,7 +15,7 @@ func Main() {
 	fmt.Println("Result part one: " + strconv.Itoa(Day9Part1(data, "0", false)))
 
 	data = Utils.ReadFileBySeparatorInt("\\Day09\\codes.txt", ",")
-	fmt.Println("Result part one: " + strconv.Itoa(Day9Part2(data, "0", false)))
+	fmt.Println("Result part two: " + strconv.Itoa(Day9Part2(data, "0", false)))
 }
 
 func Day9Part1(data []int, input string, blockOutput bool) int {

@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestDay09Part1(t *testing.T) {
+func TestDay10Part1(t *testing.T) {
 	data := Utils.ReadFileByLinesString("\\map.txt")
 	expected := 299
 	actual := Day10Part1(data)
@@ -39,5 +39,21 @@ func TestDay09Part1(t *testing.T) {
 	actual = Day10Part1(data)
 	if actual != expected {
 		t.Errorf("Test Day 10 Part 1 Test 5")
+	}
+}
+
+func TestDay10Part2(t *testing.T) {
+	data := Utils.ReadFileByLinesString("\\map.txt")
+	expected := 1419
+	actual := Day10Part2(data)
+	if actual != expected {
+		t.Errorf("Test Day 10 Part 2 Test 1")
+	}
+
+	data = Utils.ReadFileByLinesString("\\map_test4.txt")
+	expected = 802
+	actual = Day10Part2(data)
+	if actual != expected {
+		t.Errorf("Test Day 10 Part 2 Test 2")
 	}
 }
