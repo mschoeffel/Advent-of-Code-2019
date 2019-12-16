@@ -101,3 +101,21 @@ func ReadFileBySeparatorInt(filename string, separator string) []int {
 
 	return intArr
 }
+
+// Reads a file and splits it at the given separator
+func ReadFileBySeparatorLongInt(filename string, separator string) []int {
+	textArr := ReadLineBySeparatorString(filename, separator)
+
+	var intArr []int
+
+	for i := 0; i < len(textArr); i++ {
+		x, err := strconv.ParseInt(textArr[i], 10, 64)
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			intArr = append(intArr, int(x))
+		}
+	}
+
+	return intArr
+}
