@@ -20,9 +20,82 @@ type Moon struct {
 func Main() {
 	moons := Utils.ReadFileByLinesString("//Day12//moons.txt")
 	fmt.Println("Result part one: " + strconv.Itoa(Day12Part1(moons, 1000)))
+
+	moons = Utils.ReadFileByLinesString("//Day12//moons.txt")
+	fmt.Println("Result part two: " + strconv.Itoa(Day12Part2(moons)))
 }
 
 func Day12Part1(moons []string, steps int) int {
+	moonList := parseInput(moons)
+
+	for i := 0; i < steps; i++ {
+		moonList = calcVelocityMoons(moonList)
+		moonList = calcGravityMoons(moonList)
+		moonList = resetVelocityMoons(moonList)
+	}
+
+	return calcEnergyOfMoons(moonList)
+}
+
+func Day12Part2(moons []string) int {
+	moonList := parseInput(moons)
+	running := true
+	steps := 1
+	cycle := [3]int{}
+	found := [3]bool{}
+	initPos := [4][3]int{}
+	initPos[0][0] = moonList[0].x
+	initPos[0][1] = moonList[0].y
+	initPos[0][2] = moonList[0].z
+
+	initPos[1][0] = moonList[1].x
+	initPos[1][1] = moonList[1].y
+	initPos[1][2] = moonList[1].z
+
+	initPos[2][0] = moonList[2].x
+	initPos[2][1] = moonList[2].y
+	initPos[2][2] = moonList[2].z
+
+	initPos[3][0] = moonList[3].x
+	initPos[3][1] = moonList[3].y
+	initPos[3][2] = moonList[3].z
+
+	for running {
+		moonList = calcVelocityMoons(moonList)
+		moonList = calcGravityMoons(moonList)
+		moonList = resetVelocityMoons(moonList)
+
+		if !found[0] &&
+			moonList[0].x == initPos[0][0] && moonList[1].x == initPos[1][0] && moonList[2].x == initPos[2][0] && moonList[3].x == initPos[3][0] &&
+			moonList[0].vx == 0 && moonList[1].vx == 0 && moonList[2].vx == 0 && moonList[3].vx == 0 {
+			found[0] = true
+			cycle[0] = steps
+		}
+
+		if !found[1] &&
+			moonList[0].y == initPos[0][1] && moonList[1].y == initPos[1][1] && moonList[2].y == initPos[2][1] && moonList[3].y == initPos[3][1] &&
+			moonList[0].vy == 0 && moonList[1].vy == 0 && moonList[2].vy == 0 && moonList[3].vy == 0 {
+			found[1] = true
+			cycle[1] = steps
+		}
+
+		if !found[2] &&
+			moonList[0].z == initPos[0][2] && moonList[1].z == initPos[1][2] && moonList[2].z == initPos[2][2] && moonList[3].z == initPos[3][2] &&
+			moonList[0].vz == 0 && moonList[1].vz == 0 && moonList[2].vz == 0 && moonList[3].vz == 0 {
+			found[2] = true
+			cycle[2] = steps
+		}
+
+		if found[0] && found[1] && found[2] {
+			running = false
+		}
+		steps++
+	}
+	mul := gcf(gcf(cycle[0], cycle[1]), cycle[2])
+	return cycle[0] * (cycle[1] / mul) * (cycle[2] / mul)
+}
+
+func parseInput(moons []string) []Moon {
 	var moonList []Moon
 	for i := range moons {
 		moonClean := strings.ReplaceAll(moons[i], ">", "")
@@ -41,15 +114,7 @@ func Day12Part1(moons []string, steps int) int {
 		}
 		moonList = append(moonList, Moon{x: int(xTemp), y: int(yTemp), z: int(zTemp), vx: 0, vy: 0, vz: 0})
 	}
-
-	for i := 0; i < steps; i++ {
-		moonList = calcVelocityMoons(moonList)
-		moonList = calcGravityMoons(moonList)
-		//printMoons(moonList)
-		moonList = resetVelocityMoons(moonList)
-	}
-
-	return calcEnergyOfMoons(moonList)
+	return moonList
 }
 
 func printMoons(moons []Moon) {
@@ -160,4 +225,11 @@ func calcKineticEnergy(moon Moon) int {
 		vzTemp = vzTemp * -1
 	}
 	return vxTemp + vyTemp + vzTemp
+}
+
+func gcf(a int, b int) int {
+	if b == 0 {
+		return a
+	}
+	return gcf(b, a%b)
 }
