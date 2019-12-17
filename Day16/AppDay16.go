@@ -56,12 +56,12 @@ func Day16Part1(inputs []int) string {
 		strconv.Itoa(inputs[4]) + strconv.Itoa(inputs[5]) + strconv.Itoa(inputs[6]) + strconv.Itoa(inputs[7])
 }
 
-func Day16Part2(signal []int) string {
+func Day16Part2(inputs []int) string {
 	repeats := 10000
 	maxPhases := 100
 
-	position := strconv.Itoa(signal[0]) + strconv.Itoa(signal[1]) + strconv.Itoa(signal[2]) + strconv.Itoa(signal[3]) +
-		strconv.Itoa(signal[4]) + strconv.Itoa(signal[5]) + strconv.Itoa(signal[6])
+	position := strconv.Itoa(inputs[0]) + strconv.Itoa(inputs[1]) + strconv.Itoa(inputs[2]) + strconv.Itoa(inputs[3]) +
+		strconv.Itoa(inputs[4]) + strconv.Itoa(inputs[5]) + strconv.Itoa(inputs[6])
 
 	positionInt, err := strconv.ParseInt(position, 10, 64)
 	if err != nil {
@@ -70,20 +70,18 @@ func Day16Part2(signal []int) string {
 
 	offset := int(positionInt)
 
-	msg := make([]int, len(signal)*repeats-offset)
+	msg := make([]int, len(inputs)*repeats-offset)
 	for i := range msg {
-		msg[i] = signal[(offset+i)%len(signal)]
+		msg[i] = inputs[(offset+i)%len(inputs)]
 	}
 
-	n := len(msg)
-
-	if offset < len(signal)*repeats/2 {
+	if offset < len(inputs)*repeats/2 {
 		log.Fatal("offset too great:", offset)
 	}
 
 	for ; maxPhases > 0; maxPhases-- {
 		sum := 0
-		for i := n - 1; i >= 0; i-- {
+		for i := len(msg) - 1; i >= 0; i-- {
 			sum += msg[i]
 			if sum < 0 {
 				sum = -sum
