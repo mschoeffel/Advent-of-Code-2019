@@ -12,6 +12,7 @@ import (
 	"Advent-of-Code-2019/Day09"
 	"Advent-of-Code-2019/Day10"
 	"Advent-of-Code-2019/Day12"
+	"Advent-of-Code-2019/Day14"
 	"fmt"
 )
 
@@ -39,5 +40,9 @@ func main() {
 	//Day11.Main()
 	//fmt.Println("------")
 	Day12.Main()
+	fmt.Println("------")
+	//Day13.Main()
+	//fmt.Println("------")
+	Day14.Main()
 	fmt.Println("------")
 }
