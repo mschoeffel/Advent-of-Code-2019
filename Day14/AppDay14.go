@@ -23,9 +23,40 @@ type Process struct {
 func Main() {
 	processes := Utils.ReadFileByLinesString("//Day14//processes.txt")
 	fmt.Println("Result part one: " + strconv.Itoa(Day14Part1(processes)))
+
+	processes = Utils.ReadFileByLinesString("//Day14//processes.txt")
+	fmt.Println("Result part two: " + strconv.Itoa(Day14Part2(processes)))
 }
 
 func Day14Part1(processes []string) int {
+	processList := formatInput(processes)
+	return calcNeeds("FUEL", 1, processList, map[string]int{})
+}
+
+func Day14Part2(processes []string) int {
+	processList := formatInput(processes)
+	running := true
+	ore := 1000000000000
+	min := 0
+	max := ore
+	point := (max - min) / 2
+
+	for running {
+		oreNeeded := calcNeeds("FUEL", point, processList, map[string]int{})
+		if oreNeeded == ore || max-min <= 1 {
+			running = false
+			break
+		} else if oreNeeded > ore {
+			max = point
+		} else if oreNeeded < ore {
+			min = point
+		}
+		point = (max-min)/2 + min
+	}
+	return point
+}
+
+func formatInput(processes []string) []Process {
 	var processList []Process
 	for i := range processes {
 		temp := strings.Split(processes[i], " => ")
@@ -47,8 +78,7 @@ func Day14Part1(processes []string) int {
 		}
 		processList = append(processList, process)
 	}
-	return calcNeeds("FUEL", 1, processList, map[string]int{})
-
+	return processList
 }
 
 func calcNeeds(name string, amount int, processes []Process, excess map[string]int) int {
