@@ -119,3 +119,18 @@ func ReadFileBySeparatorLongInt(filename string, separator string) []int {
 
 	return intArr
 }
+
+func ReadFileByCharInt(filename string) []int {
+	data := ReadFileByLinesString(filename)[0]
+	runes := []rune(data)
+	var inputs []int
+	for i := range runes {
+		x, err := strconv.ParseInt(string(runes[i]), 10, 64)
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			inputs = append(inputs, int(x))
+		}
+	}
+	return inputs
+}
