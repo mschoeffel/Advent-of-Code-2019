@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestDay14Part1(t *testing.T) {
+func TestDay16Part1(t *testing.T) {
 	data := Utils.ReadFileByCharInt("\\inputs.txt")
 	expected := "34841690"
 	actual := Day16Part1(data)
@@ -39,5 +39,35 @@ func TestDay14Part1(t *testing.T) {
 	actual = Day16Part1(data)
 	if actual != expected {
 		t.Errorf("Test Day 16 Part 1 Test 5")
+	}
+}
+
+func TestDay16Part2(t *testing.T) {
+	data := Utils.ReadFileByCharInt("\\inputs.txt")
+	expected := "48776785"
+	actual := Day16Part2(data)
+	if actual != expected {
+		t.Errorf("Test Day 16 Part 2 Test 1")
+	}
+
+	data = Utils.ReadFileByCharInt("\\inputs_test5.txt")
+	expected = "84462026"
+	actual = Day16Part2(data)
+	if actual != expected {
+		t.Errorf("Test Day 16 Part 2 Test 2")
+	}
+
+	data = Utils.ReadFileByCharInt("\\inputs_test6.txt")
+	expected = "78725270"
+	actual = Day16Part2(data)
+	if actual != expected {
+		t.Errorf("Test Day 16 Part 2 Test 3")
+	}
+
+	data = Utils.ReadFileByCharInt("\\inputs_test7.txt")
+	expected = "53553731"
+	actual = Day16Part2(data)
+	if actual != expected {
+		t.Errorf("Test Day 16 Part 2 Test 4")
 	}
 }
