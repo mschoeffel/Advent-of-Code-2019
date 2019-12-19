@@ -55,4 +55,6 @@ func main() {
 	//fmt.Println("------")
 	Day18.Main()
 	fmt.Println("------")
+	//Day19.Main()
+	//fmt.Println("------")
 }
