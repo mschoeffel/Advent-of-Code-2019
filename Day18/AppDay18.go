@@ -3,138 +3,119 @@ package Day18
 import (
 	"Advent-of-Code-2019/Utils"
 	"fmt"
+	"math"
 	"strconv"
-	"unicode"
 )
-
-type Position struct {
-	x     int
-	y     int
-	value int
-}
 
 func Main() {
 	maze := Utils.ReadFileByLinesString("//Day18//maze.txt")
 	fmt.Println("Result part one: " + strconv.Itoa(Day18Part1(maze)))
+
 }
 
 func Day18Part1(mazeLines []string) int {
-	maze := make([][]string, len(mazeLines))
-	for i := range maze {
-		maze[i] = make([]string, len(mazeLines[0]))
-	}
+	var startPosition [2]int
+	var doorPositions [26][2]int
+	var keyPositions [26][2]int
+	numberOfKeysInMaze := 0
 
-	for i, v := range mazeLines {
-		runes := []rune(v)
-		for j, r := range runes {
-			maze[i][j] = string(r)
-		}
-	}
-
-	keys := scanMazeKeys(maze)
-	doors := scanMazeDoors(maze)
-	position := findPlayerPosition(maze)
-
-	dist := findMinPath(position, keys["j"], maze)
-
-	fmt.Println(keys)
-	fmt.Println(doors)
-	fmt.Println(position)
-
-	return dist
-}
-
-func findMinPath(pos Position, target Position, maze [][]string) int {
-	pos.value = 0
-	possibleMoves := []Position{pos}
-	var visited []Position
-	for len(possibleMoves) > 0 {
-		currentPos := possibleMoves[0]
-		possibleMoves = possibleMoves[1:]
-
-		//Check if current pos is target
-		if currentPos.x == target.x && currentPos.y == target.y {
-			return currentPos.value
-		}
-
-		//Calculate next possible possibleMoves
-		//LEFT
-		if currentPos.x-1 >= 0 {
-			posLeft := Position{x: currentPos.x - 1, y: currentPos.y, value: currentPos.value + 1}
-			if maze[posLeft.y][posLeft.x] != "#" && !contains(visited, posLeft) {
-				possibleMoves = append(possibleMoves, posLeft)
-			}
-		}
-		//RIGHT
-		if currentPos.x+1 < len(maze[0]) {
-			posRight := Position{x: currentPos.x + 1, y: currentPos.y, value: currentPos.value + 1}
-			if maze[posRight.y][posRight.x] != "#" && !contains(visited, posRight) {
-				possibleMoves = append(possibleMoves, posRight)
-			}
-		}
-		//DOWN
-		if currentPos.y+1 < len(maze) {
-			posDown := Position{x: currentPos.x, y: currentPos.y + 1, value: currentPos.value + 1}
-			if maze[posDown.y][posDown.x] != "#" && !contains(visited, posDown) {
-				possibleMoves = append(possibleMoves, posDown)
-			}
-		}
-		//UP
-		if currentPos.y-1 >= 0 {
-			posUp := Position{x: currentPos.x, y: currentPos.y - 1, value: currentPos.value + 1}
-			if maze[posUp.y][posUp.x] != "#" && !contains(visited, posUp) {
-				possibleMoves = append(possibleMoves, posUp)
-			}
-		}
-		visited = append(visited, currentPos)
-	}
-	return -1
-}
-
-func contains(list []Position, elem Position) bool {
-	for _, pos := range list {
-		if pos.x == elem.x && pos.y == elem.y {
-			return true
-		}
-	}
-	return false
-}
-
-func scanMazeKeys(maze [][]string) map[string]Position {
-	keys := map[string]Position{}
-	for i := range maze {
-		for j, v := range maze[i] {
-			r := []rune(v)
-			if unicode.IsLower(r[0]) {
-				position := Position{x: j, y: i}
-				keys[v] = position
+	for lineNumber, line := range mazeLines {
+		for charNumber := 0; charNumber < len(line); charNumber++ {
+			if line[charNumber] == '@' {
+				startPosition = [2]int{lineNumber, charNumber}
+			} else if line[charNumber] >= 'a' && line[charNumber] <= 'z' {
+				keyPositions[line[charNumber]-'a'] = [2]int{lineNumber, charNumber}
+				numberOfKeysInMaze++
+			} else if line[charNumber] >= 'A' && line[charNumber] <= 'Z' {
+				doorPositions[line[charNumber]-'A'] = [2]int{lineNumber, charNumber}
 			}
 		}
 	}
-	return keys
-}
 
-func scanMazeDoors(maze [][]string) map[string]Position {
-	doors := map[string]Position{}
-	for i := range maze {
-		for j, v := range maze[i] {
-			r := []rune(v)
-			if unicode.IsUpper(r[0]) {
-				position := Position{x: j, y: i}
-				doors[v] = position
+	//Stores to each position(x,y), foundKeys and targetKey the distance
+	positionMemory := map[[4]int]int{}
+
+	//Calculates the min distance between position and targetKey
+	findMinPath := func(currentPosition [2]int, foundKeys int, targetKeyNumber int) int {
+		currentPositionData := [4]int{currentPosition[0], currentPosition[1], foundKeys, targetKeyNumber}
+		if v, ok := positionMemory[currentPositionData]; ok {
+			return v
+		}
+
+		//[0]posx, [1]posy, [2]moves made to get to this currentPosition
+		nextPossibleMoves := [][3]int{{currentPosition[0], currentPosition[1], 0}}
+		visitedPositions := map[[2]int]bool{}
+		targetPosition := keyPositions[targetKeyNumber]
+		directions := [][2]int{{1, 0}, {0, 1}, {-1, 0}, {0, -1}}
+		for len(nextPossibleMoves) > 0 {
+			nextMove := nextPossibleMoves[0]
+			nextPossibleMoves = nextPossibleMoves[1:]
+			positionNextMove := [2]int{nextMove[0], nextMove[1]}
+			if positionNextMove == targetPosition {
+				positionMemory[currentPositionData] = nextMove[2]
+				return nextMove[2]
+			}
+			if visitedPositions[positionNextMove] {
+				continue
+			}
+			visitedPositions[positionNextMove] = true
+			for _, direction := range directions {
+				nextPossiblePosition := [3]int{nextMove[0] + direction[0], nextMove[1] + direction[1], nextMove[2] + 1}
+				if nextPossiblePosition[0] < 0 || nextPossiblePosition[0] >= len(mazeLines) || nextPossiblePosition[1] < 0 || nextPossiblePosition[1] >= len(mazeLines[0]) {
+					continue
+				}
+				c := mazeLines[nextPossiblePosition[0]][nextPossiblePosition[1]]
+				if c == '#' {
+					continue
+				}
+				b := 1 << uint(c-'a')
+				if c >= 'a' && c <= 'z' && int(c-'a') != targetKeyNumber && (foundKeys&b) == 0 {
+					continue
+				}
+				b = 1 << uint(c-'A')
+				if c >= 'A' && c <= 'Z' && (foundKeys&b) == 0 {
+					continue
+				}
+				nextPossibleMoves = append(nextPossibleMoves, nextPossiblePosition)
 			}
 		}
+		positionMemory[currentPositionData] = -1
+		return -1
 	}
-	return doors
-}
 
-func findPlayerPosition(maze [][]string) Position {
-	for i := range maze {
-		for j, v := range maze[i] {
-			if v == "@" {
-				return Position{x: j, y: i}
+	min := math.MaxInt64
+	mins := map[[3]int]int{}
+
+	var findShortestPathCollectingAllKeys func([2]int, int, int)
+	findShortestPathCollectingAllKeys = func(currentPosition [2]int, alreadyFoundKeys int, distanceGone int) {
+		if alreadyFoundKeys == (1<<numberOfKeysInMaze)-1 {
+			if distanceGone < min {
+				min = distanceGone
 			}
+			return
+		}
+		if distanceGone >= min {
+			return
+		}
+
+		key := [3]int{currentPosition[0], currentPosition[1], alreadyFoundKeys}
+		if v, ok := mins[key]; ok && v <= distanceGone {
+			return
+		}
+		mins[key] = distanceGone
+
+		for nextKey := 0; nextKey < 26; nextKey++ {
+			bit := 1 << uint(nextKey)
+			if alreadyFoundKeys&bit != 0 {
+				continue
+			}
+			distanceToNextKey := findMinPath(currentPosition, alreadyFoundKeys, nextKey)
+			if distanceToNextKey == -1 {
+				continue
+			}
+			findShortestPathCollectingAllKeys(keyPositions[nextKey], alreadyFoundKeys|bit, distanceGone+distanceToNextKey)
 		}
 	}
-	return Position{-1, -1, 0}
+	findShortestPathCollectingAllKeys(startPosition, 0, 0)
+	return min
 }
