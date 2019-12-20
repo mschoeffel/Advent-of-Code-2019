@@ -31,3 +31,30 @@ func TestDay20Part1Test3(t *testing.T) {
 		t.Errorf("Test Day 20 Part 1 Test 3: Expected: %v Actual: %v", expected, actual)
 	}
 }
+
+func TestDay20Part2Test1(t *testing.T) {
+	data := Utils.ReadFileByLinesString("\\maze.txt")
+	expected := 6834
+	actual := Day20Part2(data)
+	if actual != expected {
+		t.Errorf("Test Day 20 Part 2 Test 1: Expected: %v Actual: %v", expected, actual)
+	}
+}
+
+func TestDay20Part2Test2(t *testing.T) {
+	data := Utils.ReadFileByLinesString("\\maze_test1.txt")
+	expected := 26
+	actual := Day20Part2(data)
+	if actual != expected {
+		t.Errorf("Test Day 20 Part 2 Test 2: Expected: %v Actual: %v", expected, actual)
+	}
+}
+
+func TestDay20Part2Test3(t *testing.T) {
+	data := Utils.ReadFileByLinesString("\\maze_test3.txt")
+	expected := 396
+	actual := Day20Part2(data)
+	if actual != expected {
+		t.Errorf("Test Day 20 Part 2 Test 3: Expected: %v Actual: %v", expected, actual)
+	}
+}
