@@ -11,50 +11,95 @@ import (
 	"Advent-of-Code-2019/Day08"
 	"Advent-of-Code-2019/Day09"
 	"Advent-of-Code-2019/Day10"
+	"Advent-of-Code-2019/Day11"
 	"Advent-of-Code-2019/Day12"
+	"Advent-of-Code-2019/Day13"
 	"Advent-of-Code-2019/Day14"
+	"Advent-of-Code-2019/Day15"
 	"Advent-of-Code-2019/Day16"
+	"Advent-of-Code-2019/Day17"
 	"Advent-of-Code-2019/Day18"
+	"Advent-of-Code-2019/Day19"
+	"Advent-of-Code-2019/Day20"
+	"bufio"
 	"fmt"
+	"log"
+	"os"
+	"strconv"
+	"strings"
 )
 
 func main() {
-	Day01.Main()
-	fmt.Println("------")
-	Day02.Main()
-	fmt.Println("------")
-	Day03.Main()
-	fmt.Println("------")
-	Day04.Main()
-	fmt.Println("------")
-	Day05.Main()
-	fmt.Println("------")
-	Day06.Main()
-	fmt.Println("------")
-	Day07.Main()
-	fmt.Println("------")
-	Day08.Main()
-	fmt.Println("------")
-	Day09.Main()
-	fmt.Println("------")
-	Day10.Main()
-	fmt.Println("------")
-	//Day11.Main()
-	//fmt.Println("------")
-	Day12.Main()
-	fmt.Println("------")
-	//Day13.Main()
-	//fmt.Println("------")
-	Day14.Main()
-	fmt.Println("------")
-	//Day15.Main()
-	//fmt.Println("------")
-	Day16.Main()
-	fmt.Println("------")
-	//Day17.Main()
-	//fmt.Println("------")
-	Day18.Main()
-	fmt.Println("------")
-	//Day19.Main()
-	//fmt.Println("------")
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Enter number of day: ")
+	text, _ := reader.ReadString('\n')
+	text = strings.ReplaceAll(text, "\n", "")
+	number, err := strconv.ParseInt(text, 10, 64)
+	if err != nil {
+		fmt.Println("Invalid input.")
+		log.Fatal(err)
+	} else {
+		switch number {
+		case 1:
+			Day01.Main()
+			break
+		case 2:
+			Day02.Main()
+			break
+		case 3:
+			Day03.Main()
+			break
+		case 4:
+			Day04.Main()
+			break
+		case 5:
+			Day05.Main()
+			break
+		case 6:
+			Day06.Main()
+			break
+		case 7:
+			Day07.Main()
+			break
+		case 8:
+			Day08.Main()
+			break
+		case 9:
+			Day09.Main()
+			break
+		case 10:
+			Day10.Main()
+			break
+		case 11:
+			Day11.Main()
+			break
+		case 12:
+			Day12.Main()
+			break
+		case 13:
+			Day13.Main()
+			break
+		case 14:
+			Day14.Main()
+			break
+		case 15:
+			Day15.Main()
+			break
+		case 16:
+			Day16.Main()
+			break
+		case 17:
+			Day17.Main()
+			break
+		case 18:
+			Day18.Main()
+			break
+		case 19:
+			Day19.Main()
+			break
+		case 20:
+			Day20.Main()
+			break
+		}
+	}
 }

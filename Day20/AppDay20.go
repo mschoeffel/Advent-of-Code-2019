@@ -1,4 +1,4 @@
-package Day15
+package Day20
 
 func Main() {
 
