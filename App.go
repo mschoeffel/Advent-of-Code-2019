@@ -21,6 +21,11 @@ import (
 	"Advent-of-Code-2019/Day18"
 	"Advent-of-Code-2019/Day19"
 	"Advent-of-Code-2019/Day20"
+	"Advent-of-Code-2019/Day21"
+	"Advent-of-Code-2019/Day22"
+	"Advent-of-Code-2019/Day23"
+	"Advent-of-Code-2019/Day24"
+	"Advent-of-Code-2019/Day25"
 	"bufio"
 	"fmt"
 	"log"
@@ -99,6 +104,21 @@ func main() {
 			break
 		case 20:
 			Day20.Main()
+			break
+		case 21:
+			Day21.Main()
+			break
+		case 22:
+			Day22.Main()
+			break
+		case 23:
+			Day23.Main()
+			break
+		case 24:
+			Day24.Main()
+			break
+		case 25:
+			Day25.Main()
 			break
 		}
 	}
