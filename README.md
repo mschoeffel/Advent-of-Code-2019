@@ -61,4 +61,4 @@ The tasks of the day are also given as `README.md` in the day directory.
 Tests are provided in every day directory and can be executed with the `go test` command.
 In the `Utils` directory some helper functions are stored that can be used by every day.
 
-You can execute all days using the `App` given in the main directory.
+You can execute all days using the `App` given in the main directory and entering the number of the day you want to execute.
